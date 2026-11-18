@@ -1,0 +1,49 @@
+Q3 - TIME AND RESOURCE COMPLEXITY ANALYSIS
+
+1. TIME COMPLEXITY
+Let N be the total number of sales records across all store files.
+
+Each record is read and processed once.
+The report is written once.
+
+Time Complexity: O(N)
+
+Both Manual Resource Closing and Try-with-Resources
+have the same time complexity: O(N).
+
+2. SPACE COMPLEXITY
+Only one sales line and a fixed number of resources are
+processed at a time.
+
+Auxiliary Space Complexity: O(1), excluding file buffers.
+
+3. MAXIMUM OPEN FILE HANDLES
+
+Manual Version:
+- Normally, one report writer and one store reader are open.
+- Maximum during processing: 2 handles.
+- If an exception occurs, the reader may remain open.
+- In our failure test, 1 handle remained open after the
+  writer was closed.
+
+Try-with-Resources Version:
+- One report writer and one store reader are open at a time.
+- Maximum during processing: 2 handles.
+- After normal execution or failure: 0 handles remain open.
+
+4. COMPARISON
+
+Manual Version:
+Time: O(N)
+Maximum handles: 2
+Failure test remaining handles: 1
+
+Try-with-Resources:
+Time: O(N)
+Maximum handles: 2
+Failure test remaining handles: 0
+
+5. CONCLUSION
+Both approaches have the same time and space complexity.
+Try-with-Resources provides safer automatic resource closure
+and prevents the resource leak demonstrated in the manual version.

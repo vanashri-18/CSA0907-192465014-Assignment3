@@ -1,0 +1,30 @@
+Q3 - TEST CASES AND RESULTS
+
+Test Case 1: Valid sales input
+Input: All three store files contain valid numbers.
+Expected: Total Sales = 21900
+Manual Result: Passed
+TWR Result: Passed
+
+Test Case 2: Invalid sales input
+Input: ABC in store2.txt
+Expected: NumberFormatException
+Manual Result: One reader handle remains open.
+TWR Result: All handles closed.
+
+Test Case 3: Report comparison
+Input: Valid sales data in all files.
+Expected: Both reports contain Total Sales: 21900
+Manual Result: 21900
+TWR Result: 21900
+Status: Passed
+
+Test Case 4: Suppressed exception
+Input: Main exception and resource closing exception.
+Expected: Main exception and suppressed exception displayed.
+Result: Passed
+
+OVERALL RESULT
+All test cases were executed successfully.
+Try-with-Resources safely closes resources during normal
+execution and exception handling.

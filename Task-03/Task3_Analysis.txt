@@ -1,0 +1,44 @@
+Q3 - RESOURCE SAFETY, DEBUGGING AND ROBUST CODE
+
+1. AIM
+To compare manual resource closing using try-catch-finally with
+Try-with-Resources (TWR) in a Daily Sales Report Generator.
+
+2. RESOURCES USED
+- BufferedReader and FileReader: Read store sales files.
+- BufferedWriter and FileWriter: Write the sales report.
+
+3. MANUAL RESOURCE CLOSING
+The manual version closes each reader after successful reading
+and closes the writer in the finally block.
+
+If an exception occurs while reading a file, the reader may
+not reach its close() statement. This causes a resource leak.
+
+4. TRY-WITH-RESOURCES
+TWR automatically closes resources when the try block ends,
+even if an exception occurs.
+
+Resources are closed in reverse order of declaration.
+In this program, each store reader closes before the report
+writer.
+
+5. SUPPRESSED EXCEPTIONS
+If the main code throws an exception and resource closing also
+throws an exception, Java keeps the main exception and attaches
+the closing exception as a suppressed exception.
+getSuppressed() is used to display it.
+
+6. DEBUGGING
+The Java debugger (jdb) was used with breakpoints and step-by-step
+execution. The invalid input ABC caused a NumberFormatException.
+The manual version showed one remaining open handle.
+
+7. WHEN TWR ALONE IS NOT ENOUGH
+TWR guarantees resource closure, but it does not prevent invalid
+input, disk errors, permission problems or incomplete reports.
+Input validation, error handling and logging are also required.
+
+8. RESULT
+Both versions generated the same report after correcting the input.
+Total Sales: 21900
