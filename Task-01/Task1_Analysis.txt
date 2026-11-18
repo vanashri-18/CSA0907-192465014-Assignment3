@@ -1,0 +1,37 @@
+TASK 1 - ATM EXCEPTION HANDLING
+
+1. AIM
+To demonstrate exception handling in an ATM withdrawal system using Java.
+
+2. EXCEPTIONS USED
+FileNotFoundException - Checked exception.
+InputMismatchException - Unchecked exception.
+IllegalArgumentException - Unchecked exception.
+ArithmeticException - Unchecked exception.
+
+3. EXCEPTION HANDLING
+The try block contains the ATM operations.
+The catch blocks handle different exceptions.
+The finally block executes and displays the session completion message.
+
+4. MULTI-CATCH
+InputMismatchException and IllegalArgumentException
+are handled using a single multi-catch block.
+
+5. STACK TRACE
+An ArithmeticException occurs when a number is divided by zero.
+The stack trace identifies the error and its line number.
+
+6. EXCEPTION HIERARCHY
+Throwable is the parent class.
+It has two main subclasses: Error and Exception.
+Checked and unchecked exceptions are handled differently.
+
+7. TIME COMPLEXITY
+O(1) for the fixed ATM operations.
+
+8. SPACE COMPLEXITY
+O(1) for the fixed program operations.
+
+9. RESULT
+The ATM program successfully handles valid and invalid inputs.
