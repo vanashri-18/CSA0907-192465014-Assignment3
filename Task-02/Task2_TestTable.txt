@@ -1,0 +1,31 @@
+TASK 2 - TEST TABLE
+
+Test 1:
+Input: File size = 120 KB
+Expected: File saved successfully
+Actual: Saved answer01.pdf
+Status: PASS
+
+Test 2:
+Input: File size = 800 KB
+Expected: Storage exception
+Actual: Could not store answer02.pdf
+Status: PASS
+
+Test 3:
+Input: IOException with chaining
+Expected: Original cause displayed
+Actual: Disk quota exceeded
+Status: PASS
+
+Test 4:
+Input: Exception without cause
+Expected: getCause() returns null
+Actual: Cause information is lost
+Status: DESIGN SCENARIO
+
+Test 5:
+Input: Full stack trace
+Expected: Both exceptions displayed
+Actual: RuntimeException and IOException displayed
+Status: PASS

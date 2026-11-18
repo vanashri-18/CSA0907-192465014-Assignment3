@@ -1,0 +1,22 @@
+             ExamException
+             (extends Exception)
+                    |
+        +-----------+-----------+
+        |           |           |
+        v           v           v
+ ExamWindowClosed  CourseNot   SubmissionStorage
+    Exception     Registered      Exception
+                    Exception
+
+          All are checked exceptions.
+
+
+        LAYER ARCHITECTURE
+
+          Controller
+              |
+              v
+           Service
+              |
+              v
+           Storage

@@ -1,0 +1,45 @@
+TASK 2 - USER-DEFINED EXCEPTIONS AND PROPAGATION
+
+Aim:
+To implement user-defined exceptions and exception chaining in an Online Examination Portal.
+
+1. Exception Hierarchy:
+ExamException extends Exception.
+SubmissionStorageException extends ExamException.
+
+2. Checked and Unchecked Exceptions:
+ExamException and SubmissionStorageException are checked exceptions because they extend Exception.
+They must be handled using try-catch or declared using throws.
+
+3. Exception Propagation:
+Storage Layer -> Service Layer -> Controller Layer.
+The storage layer throws SubmissionStorageException.
+The exception travels through the service and controller.
+The controller handles it and displays an error message.
+
+4. Exception Chaining:
+The original IOException is passed using the constructor:
+new SubmissionStorageException(message, e)
+
+The getCause() method retrieves the original exception.
+
+5. Expected Output:
+Saved answer01.pdf
+Error: Could not store answer02.pdf
+Cause: Disk quota exceeded
+
+6. Without Exception Chaining:
+If the original IOException is not passed, getCause() returns null.
+The original error message is lost.
+
+7. Alternative Concept:
+If custom exceptions extend RuntimeException, they become unchecked.
+The throws declaration is optional, and callers do not have to catch them.
+
+8. Complexity Analysis:
+Creating an exception and capturing its stack trace takes time proportional to the stack depth, O(d).
+Stack trace storage requires O(d) space.
+Exception chaining stores a reference to the original exception and retains its cause information.
+
+Result:
+The program successfully demonstrates user-defined exceptions, exception propagation and exception chaining.

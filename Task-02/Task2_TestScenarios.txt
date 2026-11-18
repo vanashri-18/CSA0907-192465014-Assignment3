@@ -1,0 +1,26 @@
+TASK 2 - FAILURE SCENARIOS
+
+Scenario 1: Exam Window Closed
+The student tries to submit answers after the exam deadline.
+Exception: ExamWindowClosedException
+Expected: Submission rejected.
+
+Scenario 2: Student Not Registered
+A student tries to attend an exam without course registration.
+Exception: CourseNotRegisteredException
+Expected: Access rejected.
+
+Scenario 3: File Size Exceeded
+The student uploads an answer file larger than 500 KB.
+Exception: SubmissionStorageException
+Expected: File is not saved.
+
+Scenario 4: Exception Chaining
+Storage generates an IOException.
+It is wrapped inside SubmissionStorageException.
+getCause() retrieves the original IOException.
+
+Scenario 5: Missing Cause
+If the original cause is not passed to the constructor,
+getCause() returns null.
+The original error details are lost.

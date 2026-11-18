@@ -1,0 +1,36 @@
+JOINT CONCLUSION
+
+The storage layer should throw a meaningful SubmissionStorageException instead of allowing IOException to travel directly to the user interface.
+
+Reasons:
+
+1. It hides low-level technical details from the student.
+2. It provides a meaningful error message.
+3. It preserves the original IOException using exception chaining.
+4. It makes debugging easier using getCause().
+5. It separates storage logic from user interface logic.
+
+CHECKED AND UNCHECKED EXCEPTIONS
+
+Checked Exceptions:
+If custom exceptions extend Exception, they must be handled using try-catch or declared using throws.
+
+Unchecked Exceptions:
+If custom exceptions extend RuntimeException, the throws declaration is optional and callers are not forced to catch them.
+
+COMPLEXITY ANALYSIS
+
+Time Complexity:
+Capturing a stack trace takes O(d) time, where d is the stack depth.
+
+Space Complexity:
+A stack trace requires O(d) space to store stack frames.
+
+Exception Chaining:
+Chaining stores a reference to the original exception.
+It preserves the original cause and its stack trace.
+Therefore, additional memory is needed for the cause and its stack trace.
+
+FINAL RESULT
+
+User-defined exceptions, exception propagation and exception chaining were successfully demonstrated in the Online Examination Portal.

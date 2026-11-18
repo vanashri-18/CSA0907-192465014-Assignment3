@@ -1,0 +1,27 @@
+EXCEPTION PROPAGATION PATH
+
+1. STORAGE LAYER
+   File size exceeds 500 KB.
+   IOException occurs.
+          |
+          v
+2. STORAGE LAYER
+   Wraps IOException inside
+   SubmissionStorageException.
+          |
+          v
+3. SERVICE LAYER
+   Passes the exception using throws.
+          |
+          v
+4. CONTROLLER LAYER
+   Catches the exception using try-catch.
+          |
+          v
+5. STUDENT
+   Sees the message:
+   Could not store answer02.pdf
+
+The original cause:
+Disk quota exceeded
+is preserved using getCause().
