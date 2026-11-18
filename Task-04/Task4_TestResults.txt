@@ -1,0 +1,37 @@
+TASK 4 - TEST RESULTS
+
+Test 1: Scanner Stations
+Expected: All four stations complete.
+Actual: Passed.
+Total scripts: 100.
+
+Test 2: Ten Execution Runs
+Number of runs: 10
+Result: All runs completed.
+Total scripts in each run: 100.
+Observation: Station completion order varied.
+
+Recorded completion order:
+Run 1: Station 2 -> Station 4 -> Station 3 -> Station 1
+Other runs: Completion order varied.
+
+Test 3: run() and start()
+run() executed in main thread.
+start() executed in a separate thread.
+Result: Passed.
+
+Test 4: Thread Priority
+MIN, NORM and MAX priorities were assigned.
+All threads completed.
+Result: Passed.
+
+Test 5: Daemon Thread
+Main thread finished without waiting for daemon.
+Result: Passed.
+
+Test 6: join() and isAlive()
+isAlive() checked thread execution.
+join() waited for all stations.
+Result: Passed.
+
+Overall Result: All Task 4 experiments completed successfully.

@@ -1,0 +1,59 @@
+TASK 4 - THREAD CREATION AND LIFE CYCLE
+
+1. Thread vs Runnable
+Thread is a class that can be extended to create a thread.
+Runnable is an interface that separates the task from the thread.
+Both methods support concurrent execution.
+
+2. Thread Life Cycle
+NEW -> RUNNABLE -> RUNNING -> TERMINATED
+A thread may enter WAITING or TIMED_WAITING during execution.
+
+3. run() vs start()
+run() executes in the current thread.
+start() creates a new thread and executes run() independently.
+The experiment showed main for run() and Thread-1 for start().
+
+4. join()
+join() makes the main thread wait until another thread completes.
+It ensures the final script count is printed after all stations finish.
+
+5. isAlive()
+isAlive() checks whether a thread is still running.
+The experiment displayed true while stations were active.
+
+6. Thread Priority
+Java supports MIN_PRIORITY (1), NORM_PRIORITY (5)
+and MAX_PRIORITY (10).
+Priority is only a scheduling hint. Execution order is not guaranteed.
+
+7. Daemon Thread
+A daemon thread runs in the background.
+The JVM can exit when all non-daemon threads finish.
+The experiment showed the main thread finishing without waiting
+for the daemon thread.
+
+8. Execution Results
+Four scanner stations processed 10, 20, 30 and 40 scripts.
+Total scripts scanned: 100.
+The completion order can vary between executions.
+Correctness does not depend on execution order.
+
+9. Thread Scheduling
+The JVM and operating system scheduler decide which thread runs.
+Therefore, thread execution and completion order may change.
+
+10. ExecutorService Alternative
+A fixed thread pool can manage multiple scanner tasks.
+It reuses threads and reduces the overhead of creating many threads.
+
+11. Complexity
+For four stations, time complexity is O(1) for a fixed workload.
+Space complexity is O(1) for a fixed number of threads.
+For n scripts divided among p workers, ideal processing time
+is approximately O(n/p), excluding scheduling and overhead.
+
+Conclusion:
+Thread and Runnable support concurrent scanning.
+join() ensures completion before the final result.
+The program successfully scanned 100 scripts.
