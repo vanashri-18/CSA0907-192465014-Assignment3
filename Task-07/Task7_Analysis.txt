@@ -1,0 +1,88 @@
+TASK 7 - CONCURRENT FAULT-TOLERANT PROCESSOR
+
+1. Objective
+Process 10,000 answer-script score files concurrently.
+Corrupt or missing files must not stop the complete process.
+
+2. Design
+FaultTolerantProcessor:
+- prepareFiles(): creates sample score files.
+- processFiles(): submits file-processing tasks.
+- ExecutorService: manages worker threads.
+- Callable: processes each score file.
+- Future: collects each task result.
+- ConcurrentLinkedQueue: stores failure details.
+
+3. Processing Workflow
+Start
+  |
+Prepare 10,000 score files
+  |
+Create fixed thread pool
+  |
+Submit each file as a Callable task
+  |
+Read and validate score
+  |
+Is file valid?
+  | Yes             | No
+Count success       Record failure
+  |                 |
+Collect Future results
+  |
+Display summary and execution time
+  |
+End
+
+4. Fault Injection
+Valid files: 9,798
+Corrupt files: 102
+Missing files: 100
+Total files: 10,000
+
+5. Experimental Results
+
+Thread Pool    Success    Failed    Time (ms)
+1              9798       202       2571.45
+2              9798       202       1094.16
+4              9798       202       570.09
+8              9798       202       322.15
+
+Unhandled failures: 0 for every pool size.
+
+6. Failure Handling
+NumberFormatException: Handles corrupt score data.
+NoSuchFileException: Handles missing score files.
+Each task catches its own exception.
+Other files continue processing.
+
+7. Data Structures
+ExecutorService manages concurrent workers.
+Future collects task results.
+ConcurrentLinkedQueue stores failure messages.
+ArrayList stores Future references.
+
+8. Pool Size Recommendation
+Pool size 8 was fastest in this experiment.
+It processed all files in 322.15 ms.
+However, more threads may increase context switching,
+memory use and resource contention.
+The best pool size depends on system resources and workload.
+
+9. Limitations
+The benchmark uses locally generated files.
+Disk caching and system load can affect timings.
+A real deployment should test with actual score files
+and repeat measurements on the target system.
+
+10. Complexity
+For n files, total processing work is O(n).
+With p workers, ideal processing time is approximately O(n/p).
+The Future result list and failure queue require O(n) space.
+The thread pool uses O(p) worker threads.
+
+Conclusion:
+The concurrent processor handled all 10,000 files.
+It processed 9,798 valid files and recorded 202 failures.
+No unhandled failures occurred.
+The 8-thread pool achieved the lowest measured time.

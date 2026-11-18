@@ -1,0 +1,59 @@
+TASK 7 - TEST CASES AND RESULTS
+
+TEST 1: File Preparation
+Expected: 10,000 files.
+Actual: 9,798 valid, 102 corrupt, 100 missing.
+Result: Passed.
+
+TEST 2: Thread Pool Size 1
+Successful: 9,798
+Failed: 202
+Unhandled failures: 0
+Time: 2571.45 ms
+Result: Passed.
+
+TEST 3: Thread Pool Size 2
+Successful: 9,798
+Failed: 202
+Unhandled failures: 0
+Time: 1094.16 ms
+Result: Passed.
+
+TEST 4: Thread Pool Size 4
+Successful: 9,798
+Failed: 202
+Unhandled failures: 0
+Time: 570.09 ms
+Result: Passed.
+
+TEST 5: Thread Pool Size 8
+Successful: 9,798
+Failed: 202
+Unhandled failures: 0
+Time: 322.15 ms
+Result: Passed.
+
+TEST 6: Corrupt File Handling
+Invalid score files caused NumberFormatException.
+The exception was handled inside each task.
+Result: Passed.
+
+TEST 7: Missing File Handling
+Missing files caused NoSuchFileException.
+The exception was handled inside each task.
+Result: Passed.
+
+TEST 8: Summary Verification
+Expected successful files: 9798
+Actual successful files: 9798
+
+Expected failed files: 202
+Actual failed files: 202
+
+Unhandled failures: 0
+Result: Passed.
+
+OVERALL RESULT
+All 10,000 files were processed.
+Individual file errors did not stop the processor.
+The 8-thread pool was fastest in this experiment.
