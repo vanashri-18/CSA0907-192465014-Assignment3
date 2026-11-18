@@ -1,0 +1,66 @@
+TASK 6 - DEADLOCK AND PRODUCER-CONSUMER
+
+PART A: DEADLOCK
+
+1. Deadlock
+Deadlock occurs when two or more threads wait forever for
+resources held by each other.
+
+2. Deadlock Experiment
+User 1 locked Wallet A.
+User 2 locked Wallet B.
+Both users then waited for the other wallet lock.
+
+3. Four Coffman Conditions
+Mutual Exclusion: Only one thread can hold a lock at a time.
+Hold and Wait: A thread holds one lock while waiting for another.
+No Preemption: A lock cannot be forcibly taken away.
+Circular Wait: Threads wait for resources held by each other.
+
+4. Deadlock Prevention
+Both users acquire Wallet A first and Wallet B second.
+Consistent lock ordering prevents circular waiting.
+Both transfers completed successfully.
+
+PART B: PRODUCER-CONSUMER
+
+5. Bounded Buffer
+The buffer uses a Queue with a capacity of 5.
+One producer creates 20 tokens.
+Two consumers each consume 10 tokens.
+
+6. wait() and notifyAll()
+wait() makes a thread release the lock and wait.
+notifyAll() wakes all threads waiting on the same object.
+The threads must recheck the condition after waking.
+
+7. Why while Instead of if?
+A thread may wake up when the required condition is still false.
+The while loop checks the condition again before continuing.
+Using if may allow incorrect buffer operations.
+
+8. sleep() vs wait()
+sleep() pauses a thread but does not release its lock.
+wait() releases the object's lock while waiting.
+
+9. Experimental Results
+Tokens produced: 20
+Tokens consumed: 20
+Total consumed sum: 210
+Maximum buffer size observed: 1
+Buffer capacity: 5
+The buffer never exceeded its capacity or became negative.
+
+10. Alternative
+ArrayBlockingQueue<Integer>(5) provides a ready-made bounded,
+thread-safe producer-consumer queue.
+
+11. Complexity
+Each queue insertion and removal takes O(1) time.
+For n tokens, total processing time is O(n).
+Buffer space complexity is O(5), which is O(1) for fixed capacity.
+
+Conclusion:
+Deadlock was reproduced and prevented through consistent
+lock ordering. The producer-consumer program processed all
+20 tokens correctly using wait() and notifyAll().

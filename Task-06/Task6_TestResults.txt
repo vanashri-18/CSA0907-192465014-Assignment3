@@ -1,0 +1,39 @@
+TASK 6 - TEST RESULTS
+
+TEST 1: Deadlock Demonstration
+User 1 acquired Wallet A.
+User 2 acquired Wallet B.
+Both threads waited for the other lock.
+Result: Deadlock reproduced.
+
+TEST 2: Deadlock Prevention
+Both users acquired Wallet A before Wallet B.
+Both transfers completed successfully.
+Result: Passed.
+
+TEST 3: Producer-Consumer
+Producer created 20 tokens.
+Two consumers processed 10 tokens each.
+Result: Passed.
+
+TEST 4: Buffer Capacity
+Buffer capacity: 5
+Maximum observed buffer size: 1
+Minimum observed buffer size: 0
+Result: Passed.
+
+TEST 5: Token Sum
+Expected sum: 210
+Actual sum: 210
+Result: Passed.
+
+TEST 6: Buffer Conditions
+while loop checks whether the buffer is full or empty.
+wait() releases the lock while waiting.
+notifyAll() wakes waiting threads to recheck conditions.
+Result: Passed.
+
+OVERALL RESULT
+Deadlock was demonstrated and prevented.
+All 20 tokens were processed successfully.
+The buffer stayed within its capacity.
