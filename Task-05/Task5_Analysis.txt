@@ -1,0 +1,58 @@
+TASK 5 - RACE CONDITIONS AND SYNCHRONIZATION
+
+1. Race Condition
+A race condition occurs when multiple threads access and modify
+shared data at the same time without proper synchronization.
+
+2. Critical Section
+The critical section is the code that checks whether a seat is
+available and then marks it as booked.
+
+3. Unsynchronized Booking
+The unsynchronized version allowed multiple users to book the
+same seat. In the 10 repeated runs, the number of seats sold
+was always greater than 10.
+
+4. Synchronized Method
+The synchronized method locks the Cinema object.
+Only one thread can execute the method on that object at a time.
+It correctly sold exactly 10 seats.
+
+5. Synchronized Block
+The synchronized block protects only the critical section.
+It also correctly sold exactly 10 seats.
+
+6. Experimental Results
+Without synchronization: 30 seats sold, 46 ms.
+Synchronized method: 10 seats sold, 34 ms.
+Synchronized block: 10 seats sold, 29 ms.
+
+7. Repeated Race Condition Test
+Run 1: 24
+Run 2: 23
+Run 3: 19
+Run 4: 26
+Run 5: 21
+Run 6: 21
+Run 7: 23
+Run 8: 21
+Run 9: 23
+Run 10: 23
+
+8. Static Synchronization
+A static synchronized method locks the Class object.
+It is useful when threads share static data across instances.
+
+9. Cinema Recommendation
+For a cinema with 20 screens, synchronization should be used
+to prevent double booking. Separate lock objects for individual
+screens can allow independent bookings to happen concurrently.
+
+10. Complexity
+Booking lookup and update take O(1) time per request.
+For u booking requests, total work is O(u).
+The seat array requires O(s) space for s seats.
+
+Conclusion:
+Synchronization prevents race conditions and ensures that
+each seat is booked only once.

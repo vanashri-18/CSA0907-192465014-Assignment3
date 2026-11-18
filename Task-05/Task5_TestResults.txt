@@ -1,0 +1,36 @@
+TASK 5 - TEST CASES AND RESULTS
+
+Test 1: Unsynchronized Booking
+Input: 100 users, 10 seats.
+Expected: Race condition may cause double booking.
+Actual: 30 seats sold.
+Result: Passed.
+
+Test 2: Synchronized Method
+Input: 100 users, 10 seats.
+Expected: Exactly 10 seats sold.
+Actual: 10 seats sold.
+Result: Passed.
+
+Test 3: Synchronized Block
+Input: 100 users, 10 seats.
+Expected: Exactly 10 seats sold.
+Actual: 10 seats sold.
+Result: Passed.
+
+Test 4: Repeated Race Condition
+Number of runs: 10.
+Results: 24, 23, 19, 26, 21, 21, 23, 21, 23, 23.
+Observation: Every run sold more than 10 seats.
+Result: Passed.
+
+Test 5: Execution Time
+Unsynchronized: 46 ms.
+Synchronized method: 34 ms.
+Synchronized block: 29 ms.
+Observation: Synchronized block was fastest in this single test.
+Note: Timings can vary between executions.
+
+Overall Result:
+Synchronized method and synchronized block prevented
+double booking in the experiment.
